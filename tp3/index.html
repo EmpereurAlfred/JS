@@ -63,32 +63,26 @@
           <div class="alert my-3 alert-secondary">
             <div >IMC : <b id="IMC" ></b></div>
             <div>Tranche : <b id="tranche" ></b></div>
+            <div>Poids Idéal : <b id="p_ideal"></b></div>
             <div>Objectif : <b id="objectif" ></b></div>
           </div>
           
         </div>
       </div>
     </div>
-    <footer class="py-5 bg-dark">
-      <div class="container px-4 px-lg-5">
-        <p class="m-0 text-center text-white">
-          Copyright &copy; Seven Valley 2024
-        </p>
-      </div>
-    </footer>
   </body>
 </html>
 
 <script>
   function calcul_imc(){
-   let inputpoids = document.getElementById('poids');
-   let poids = inputpoids.value;
-   let inputtaille = document.getElementById('taille');
-   let taille = inputtaille.value;
-   let imc = Math.round(poids / (taille*taille)*10)/10;
+   const inputpoids = document.getElementById('poids');
+   const poids = inputpoids.value;
+   const inputtaille = document.getElementById('taille');
+   const taille = inputtaille.value;
+   const imc = Math.round(poids / (taille*taille)*10)/10;
    document.getElementById('IMC').textContent = imc;
-   let tranche = "" 
-   
+   const tranche = "" 
+   const p_ideal = ""
   if (imc < 18.5) {
     tranche = "Maigreur";
   } else if (imc >= 18.5 && imc < 25) {
@@ -103,5 +97,8 @@
     tranche = "Obésité morbide";
   }
  document.getElementById('tranche').textContent = tranche ;
+ const taillecm = taille*100;
+ let poidsideal = taillecm - 100 - ( taillecm - 150 ) / 4 ;
+ document.getElementById('p_ideal').textContent = poidsideal;
 }
 </script>
