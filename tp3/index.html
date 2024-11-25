@@ -64,7 +64,7 @@
             <div >IMC : <b id="IMC" ></b></div>
             <div>Tranche : <b id="tranche" ></b></div>
             <div>Poids Idéal : <b id="p_ideal"></b></div>
-            <div>Objectif : <b id="objectif" ></b></div>
+            <div>Objectif :<b id="objectif" ></b></div>
           </div>
           
         </div>
@@ -81,8 +81,8 @@
    const taille = inputtaille.value;
    const imc = Math.round(poids / (taille*taille)*10)/10;
    document.getElementById('IMC').textContent = imc;
-   const tranche = "" 
-   const p_ideal = ""
+   let tranche = "" 
+   let p_ideal = ""
   if (imc < 18.5) {
     tranche = "Maigreur";
   } else if (imc >= 18.5 && imc < 25) {
@@ -97,8 +97,22 @@
     tranche = "Obésité morbide";
   }
  document.getElementById('tranche').textContent = tranche ;
+ 
  const taillecm = taille*100;
  let poidsideal = taillecm - 100 - ( taillecm - 150 ) / 4 ;
  document.getElementById('p_ideal').textContent = poidsideal;
+ let objectif = ""
+ if ( poids < poidsideal ) {
+  objectif = poidsideal - poids ;
+ // document.getElementById('objectif').textContent = "Votre objectif est de gagner "+ objectif+ " Kg";
+  document.getElementById('objectif').textContent = `Votre objectif est de gagner ${objectif} Kg`;
+ }
+ else if ( poids > poidsideal ) {
+  objectif = poids - poidsideal  ;
+  document.getElementById('objectif').textContent = `Votre objectif est de perdre ${objectif} Kg`;
+ }
+ else if ( poids == poidsideal ) {
+  document.getElementById('objectif').textContent = "Vous avez un poids parfait !";
+ }
 }
 </script>
