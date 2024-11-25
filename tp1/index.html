@@ -60,7 +60,7 @@
 
          
 
-          <div class="alert my-3 alert-secondary">
+          <div id="couleur" class="alert my-3 alert-secondary">
             <div >IMC : <b id="IMC" ></b></div>
             <div>Tranche : <b id="tranche" ></b></div>
             <div>Poids Idéal : <b id="p_ideal"></b></div>
@@ -72,6 +72,14 @@
     </div>
   </body>
 </html>
+
+<style>
+  .vert{background-color: lightgreen;}
+  .jaune{background-color: lightyellow;}
+  .orange{background-color: lightsalmon;}
+  .rouge{background-color:tomato}
+  .marron{background-color: rgb(231, 129, 40);}
+</style>
 
 <script>
   function calcul_imc(){
@@ -85,16 +93,22 @@
    let p_ideal = ""
   if (imc < 18.5) {
     tranche = "Maigreur";
+    document.getElementById('couleur').classList.add('jaune')
   } else if (imc >= 18.5 && imc < 25) {
     tranche = "Normale";
+    document.getElementById('couleur').classList.add('vert')
   } else if (imc >= 25 && imc < 30) {
     tranche = "Surpoids";
+    document.getElementById('couleur').classList.add('jaune')
   } else if (imc >= 30 && imc < 35) {
     tranche = "Obésité";
+    document.getElementById('couleur').classList.add('orange')
   } else if (imc >= 35 && imc < 40) {
     tranche = "Obésité sévère";
+    document.getElementById('couleur').classList.add('rouge')
   } else if (imc >= 40) {
     tranche = "Obésité morbide";
+    document.getElementById('couleur').classList.add('marron')
   }
  document.getElementById('tranche').textContent = tranche ;
  
