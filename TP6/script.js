@@ -8,11 +8,11 @@ class Personne {
   }
 }
 
-const saveLocal =()=>{
+const save =()=>{
   localStorage.setItem('personnes',JSON.stringify(personnes));
 }
 
-const afficherHTML = () => {
+const afficher = () => {
   const tbody = document.getElementById("myTbody");
 
   tbody.innerHTML = "";
@@ -33,8 +33,8 @@ const afficherHTML = () => {
       let tr = evt.target.closest("tr");
       let i = tr.rowIndex -1;
       personnes.splice(i, 1);
-      saveLocal();
-      afficherHTML();
+      save();
+      afficher();
     };
     btnModifier = clone.querySelector(".btn-warning");
     btnModifier.onclick = (evt) => {
@@ -48,7 +48,7 @@ const afficherHTML = () => {
         tr.classList.remove("table-success");
         tr.classList.add("table-danger");
       }
-      saveLocal()
+      save()
 
     };
     
@@ -63,12 +63,12 @@ document.getElementById("btnAjouter").onclick = () => {
   document.getElementById("nom").value = "";
   const  p = new Personne(prenom,nom);
   personnes.push(p);
-  saveLocal();
-  afficherHTML();
+  save();
+  afficher();
 };
 
 const data = localStorage.getItem('personnes');
 if (data){
   personnes= JSON.parse(data);
-  afficherHTML();
+  afficher();
 }
