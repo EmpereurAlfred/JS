@@ -58,7 +58,6 @@ document.getElementById("btnAjouter").onclick = () => {
   save();
   afficher();
 };
-
 const data = localStorage.getItem('personnes');
 if (data){
   personnes= JSON.parse(data);

@@ -1,9 +1,9 @@
 let series = [];
 let tabFav = [];
-const saveLocal =()=>{
+const Save =()=>{
     localStorage.setItem('series',JSON.stringify(tabFav));
 }
-const getSerie = async (imdb) => {
+const Grab = async (imdb) => {
     let key = "47fba91c";
     let url = "http://www.omdbapi.com/?apikey=" + key + "&i=" + imdb ;
     const response = await fetch(url);
@@ -11,7 +11,7 @@ const getSerie = async (imdb) => {
     return serie;
 }
 
-const afficheSeries =  () => {
+const Afficher =  () => {
 const tbody = document.getElementById("myTbody");
   tbody.innerHTML = "";
   for (let s of series) {
@@ -25,18 +25,18 @@ const tbody = document.getElementById("myTbody");
     clone.querySelector("button").onclick = async (evt) => {
       const tr = evt.target.closest("tr");
       const i = tr.rowIndex - 1;
-      let serie= await getSerie(series[i].imdbID);
+      let serie= await Grab(series[i].imdbID);
     
        tabFav.push(serie);
-      afficherFav();
+      Fav();
       series.splice(i, 1);
-      afficheSeries();
-      saveLocal();
+      Afficher();
+      Save();
     };
     tbody.append(clone);
   }
 };
-const afficherFav = () => {
+const Fav = () => {
   const tbody2 = document.getElementById("myTbody2");
   tbody2.innerHTML = "";
 
@@ -54,8 +54,8 @@ const afficherFav = () => {
       const tr = evt.target.closest("tr");
       const i = tr.rowIndex - 1;
       tabFav.splice(i, 1);
-      afficherFav();
-      saveLocal();
+      Fav();
+      Save();
     };
     tbody2.append(clone);
   }
@@ -70,10 +70,10 @@ document.getElementById("btnSearch").onclick = async () => {
   const data = await response.json();
 
   series = data.Search;
-  afficheSeries();
+  Afficher();
 };
 const data = localStorage.getItem('series');
 if (data){
     tabFav= JSON.parse(data);
-    afficherFav();
+    Fav();
 }
