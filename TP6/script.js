@@ -7,24 +7,19 @@ class Personne {
     this.status=true;
   }
 }
-
 const save =()=>{
   localStorage.setItem('personnes',JSON.stringify(personnes));
 }
-
 const afficher = () => {
   const tbody = document.getElementById("myTbody");
-
   tbody.innerHTML = "";
   for (let p of personnes) {
     const template = document.getElementById("templateTr");
-
     const clone = template.content.cloneNode(true);
     let tr = clone.querySelector("tr");
     p.status
       ? tr.classList.add("table-success")
       : tr.classList.add("table-danger");
-
     let td = clone.querySelectorAll("td");
     td[0].innerHTML = p.prenom;
     td[1].innerHTML = p.nom;
@@ -49,13 +44,10 @@ const afficher = () => {
         tr.classList.add("table-danger");
       }
       save()
-
-    };
-    
+    };  
     tbody.appendChild(clone);
   }
 };
-
 document.getElementById("btnAjouter").onclick = () => {
   let prenom = document.getElementById("prenom").value;
   let nom = document.getElementById("nom").value;
