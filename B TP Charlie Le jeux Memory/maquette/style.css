@@ -1,0 +1,96 @@
+body{
+	margin:0;
+	background-image: url("bg.webp");
+}
+.selected{
+		border-color: rgb(92, 220, 0)!important; 
+		opacity: 0.60;
+}
+.container{
+	padding: 1px;
+	margin-top: 30px;
+	margin-left: auto;
+	margin-right: auto;
+	width:336px;
+	height:720px;
+}
+.container div {
+	cursor: pointer;
+	float:left;
+	width:80px;
+	height: 116px;
+	border: 1px solid rgba(10, 10, 10, 0);
+}
+.container div:hover {opacity: 0.60}
+
+
+.card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+}
+
+.apres {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    gap: 20px;
+    width: 100%;
+    height: 100%;
+	size:cover;
+}
+.apres .winimg{
+	display: flex;
+	justify-content: start;
+	align-items: start;
+	size:cover;
+}
+
+.win-message {
+    background: transparent;
+    max-width: 600px;
+    color: white;
+}
+
+.win-message p {
+    font-size: 1.5em;
+    background: #00274d;
+    padding: 10px 20px;
+    border-radius: 12px;
+    text-align: center;
+    color: white;
+}
+
+#time-display {
+    font-size: 2em;
+    margin: 10px 0;
+}
+
+.button {
+    text-align: center;
+}
+
+#restart-button {
+    background: #004080;
+    color: white;
+    padding: 20px 40px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#restart-button:hover {
+    background: #0059b3;
+}
+
+
