@@ -1,1 +1,1 @@
-https://empereuralfred.github.io/JS/
+https://empereuralfred.github.io/JS/index.html
